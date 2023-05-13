@@ -34,7 +34,9 @@ if uploaded_file is not None:
     # Read the CSV file into a DataFrame
     input_data = pd.read_csv(uploaded_file)
     input_data.Profession.fillna('mode', inplace=True)
+    
     newdata = input_data.drop(['CustomerID'], axis = 1)
+    newdata.dropna()
     newdata['Gender'] = pd.factorize(newdata['Gender'])[0]
     newdata['Profession'] = pd.factorize(newdata['Profession'])[0]
 
